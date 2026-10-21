@@ -1,0 +1,92 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% block content %} 
+<script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"></script>
+
+<style>
+.parsley-errors-list {
+    color: red;
+}
+</style>
+<!--===== LOGIN =====-->
+<section id="login" class="padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="profile-login">
+          <div class="login_detail">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist"> 
+              <li><a href="/client/clientlogin/" class="header-login"> Login </a></li>
+              <li><a href="/client/clientregister/" class="header-login"> Register</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content padding_b40 padding_t40">
+              <div    class="tab-pane fade in active" id="profile">
+                <h2>Sign Up for Free</h2>
+                <div class="agent-p-form">
+                  <div class="row">
+                    <form class="callus" method="post" data-parsley-validate >
+                      {% csrf_token %}
+                      <div class="col-md-12">
+                        <div class="single-query">
+                          <input type="text" class="keyword-input"  name="name"  placeholder="FULL name"   required data-parsley-required-message="Full name is required" >
+                        </div>
+                        <div class="single-query">
+                          <input type="text" class="keyword-input" name="house_no"  placeholder="HOUSE NUMBER"  data-parsley-type="number" maxlength="3" data-parsley-maxlength="3" required data-parsley-required-message="HOUSE NUMBER is required" >
+                        </div>
+                        <div class="single-query">
+                          <select name="block_no"  class="keyword-input"  required data-parsley-required-message="select block name is required">
+                              <option>A</option>
+                              <option>B</option>
+                              <option>C</option>
+                              <option>D</option>
+                          </select>
+                        </div>
+                        <div class="single-query">
+                          <input type="phone" class="keyword-input"  name="contact"  placeholder="CONTECT NUMBER" required data-parsley-required-message="Full name is required">
+                        </div>
+                        <div class="single-query">
+                          <input type="email" class="keyword-input"  name="email"  placeholder="EMAIL" data-parsley-type="email" required data-parsley-required-message="EMAIL CAN'T BE NULL">
+                        </div>
+                        <div class="single-query">
+                          <input type="password" class="keyword-input"   name="password" placeholder="Password"  required 
+                          data-parsley-minlength="6" 
+                          data-parsley-maxlength="9"
+                          data-parsley-pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$"
+                          data-parsley-pattern-message="Password must contain uppercase, lowercase, number, and special character."
+                          >
+                        </div>
+                        <!-- <div class="single-query">
+                          <input type="num" class="keyword-input"   name="role" placeholder="role">
+                        </div> -->
+                        <!-- <div class="single-query">
+                          <input type="num" class="keyword-input"   name="otp_used" placeholder="role">
+                        </div> -->
+                      </div>
+                      
+                    
+                      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <div class="query-submit-button">
+                          <button type="submit" class="btn_fill">Creat an Account</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--===== #/LOGIN =====-->
+{% endblock %}

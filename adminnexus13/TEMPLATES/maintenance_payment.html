@@ -1,0 +1,129 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!-- with filter  -->
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-title">
+            <div class="row">
+                
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header pb-0 card-no-border">
+                <h3>Maintenance Payment Status</h3>
+            </div>
+            <div class="card-body">
+                <!-- Month Selector Form -->
+                <form method="get" action="/maintenance-payment/">
+                    <label for="month">Select Month:</label>
+                    <input type="month" id="month" name="month" value="{{ selected_month|default:'' }}">
+                    <button class="btn btn-primary buttons-pdf buttons-html5" type="submit">Filter</button>
+                </form>
+                
+                <!-- Display Members -->
+                {% if selected_month %}
+                <br/>
+
+                <!-- <form method="post" action="/maintenance/notify_all/">
+                    {% csrf_token %}
+                    <button Class="btn btn-primary buttons-pdf buttons-html5" type="submit">Notify All</button>
+                </form> -->
+
+                <br/>
+                
+                <h4>Members who haven't paid for {{ selected_month }}</h4>
+                <br/>
+                <a href="/maintenance-payment/" class="btn btn-primary buttons-pdf buttons-html5" >paid member</a>
+                <br/>
+                
+
+                    <br/>
+                    <div class="dt-ext table-responsive">
+                        <table class="display" id="export-button">
+                            <thead>
+                                <tr>
+                                    <th>Member ID</th>
+                                    <th>Name</th>
+                                    <th>House No</th>
+                                    <th>Block No</th>
+                                    <th>Contact</th>
+                                    <th>Email</th>
+                                    <th>action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for member in unpaid_members %}
+                                    <tr>
+                                        <td>{{ member.member_id }}</td>
+                                        <td>{{ member.name }}</td>
+                                        <td>{{ member.house_no }}</td>
+                                        <td>{{ member.block_no }}</td>
+                                        <td>{{ member.contact }}</td>
+                                        <td>{{ member.email }}</td>
+                                        <td>
+                                            <!-- Notify Button for Individual Members -->
+                                            <form method="post" action="/maintenance/notify/{{member.member_id}}/">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-warning">Notified</button>
+                                            </form>
+                                            <!-- <a class="btn btn-warning" href="/maintenance/notify/{{member.member_id}}/">Notifyed</a> -->
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li class="alert alert-success">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}     
+                
+
+                    </div>
+                {% else %}
+                <br/>
+               
+                    <h4>All Members Who Have Paid Maintenance</h4>
+                    <br/>
+             
+                    <div class="dt-ext table-responsive">
+                        <table class="display" id="export-button">
+                            <thead>
+                                <tr>
+                                    <th>Payment ID</th>
+                                    <th>Member Name</th>
+                                    <th>Date Time</th>
+                                    <th>Amount</th>
+                                    <th>Description</th>
+                                    <th>Payment Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for payment in paid_members %}
+                                    <tr>
+                                        <td>{{ payment.payment_id }}</td>
+                                        <td>{{ payment.member_id.name }}</td>
+                                        <td>{{ payment.date_time }}</td>
+                                        <td>{{ payment.amount }}</td>
+                                        <td>{{ payment.description }}</td>
+                                        <td>{{ payment.payment_status }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends -->
+</div>
+{% endblock %}

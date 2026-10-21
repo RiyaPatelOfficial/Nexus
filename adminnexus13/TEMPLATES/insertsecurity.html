@@ -1,0 +1,97 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"></script>
+
+<style>
+.parsley-errors-list {
+    color:RED;
+}
+</style>
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-title">
+      <div class="row">
+        
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header card-no-border pb-0">
+            <h3>Add Security</h3>
+            
+          </div>
+          <div class="card-body">
+            <!-- form start -->
+            <form class="row g-3 needs-validation custom-input tooltip-valid validation-forms" method="post" novalidate="" data-parsley-validate >
+              {% csrf_token %}
+               <div class="col-xl-6">
+                <div class="card">
+                  <div class="card-body">
+                    <form class="row g-3 needs-validation custom-input validation-forms" novalidate data-parsley-validate > 
+                      <div class="col-12">
+                        <label class="form-label" for="validationCustom01">name</label>
+                        <input class="form-control " id="validationCustom01" name="name" type="text" placeholder="full name" required data-parsley-required-message="Name is required">
+                        <div class="invalid-feedback">Please enter your valid</div>
+                        <div class="valid-feedback">
+                           Looks's Good! </div>
+                          </div>
+                      <div class="col-12">
+                        <label class="form-label" for="validationCustom01">Email</label>
+                        <input class="form-control " id="validationCustom01" name="email" type="email" placeholder="email" required data-parsley-required-message="Security Email is required">
+                        <div class="invalid-feedback">Please enter your valid</div>
+                        <div class="valid-feedback">
+                           Looks's Good! </div>
+                          </div>
+                      <div class="col-12">
+                        <label class="form-label" for="validationCustom01">Password</label>
+                        <input class="form-control " id="validationCustom01" name="password"  type="password" placeholder="password" data-parsley-type="number" data-parsley-maxlength="4"  required data-parsley-required-message="Pass is required">
+                        <div class="invalid-feedback">Please enter your valid</div>
+                        <div class="valid-feedback">
+                           Looks's Good! </div>
+                          </div>
+                      <div class="col-12">
+                        <label class="form-label" for="validationCustom01">contact</label>
+                        <input class="form-control " id="validationCustom01" name="contact"  type="text" placeholder="Contact" required data-parsley-type="number" data-parsley-maxlength="10" data-parsley-required-message="Pass is required">
+                        <div class="invalid-feedback">Please enter your valid</div>
+                        <div class="valid-feedback">
+                           Looks's Good! </div>
+                          </div>
+                      <div class="col-12">
+                      <img src="" height="200" width="200" name="output" id="output" style="margin-left: 2px;border-radius: 5px 5px 5px 5px;"/><br><br>
+                       
+                        <label class="form-label" for="validationCustom01">slect id</label>
+                        <input class="form-control " id="validationCustom01" alt="Id image" name="id_proof" type="file" placeholder="Id PRoof " required required data-parsley-required-message="Pass is required"  accept="image/*" onchange="loadFile(event)">
+                      </div>
+                      <script>
+                          function loadFile(event){
+                              document.getElementById('output').src=
+                              URL.createObjectURL(event.target.files[0]);
+                          }
+                      </script>
+                        <div class="invalid-feedback">Please enter your valid</div>
+                        <div class="valid-feedback">
+                           Looks's Good! </div>
+                          </div>
+                           
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

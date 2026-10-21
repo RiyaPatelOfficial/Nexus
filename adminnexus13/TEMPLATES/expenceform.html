@@ -1,0 +1,82 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"></script>
+
+<style>
+.parsley-errors-list {
+    color:RED;
+}
+</style>
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-title">
+      <div class="row">
+        
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header card-no-border pb-0">
+            
+          </div>
+          <div class="card-body">
+            <!-- form start -->
+            <form class="row g-3 needs-validation custom-input tooltip-valid validation-forms" method="post" novalidate="" data-parsley-validate>
+              {% csrf_token %}
+              
+              <div class="col-xl-6">
+                <div class="card">
+                  <h3>ADD expence</h3>
+                  <div class="card-header card-no-border pb-0">
+                  </div>
+                  <div class="card-body">
+                    <form class="row g-3 needs-validation custom-input validation-forms" novalidate="">
+                      <div class="col-12">
+                        <label class="form-label" for="validationCustom01">description</label>
+                        <input class="form-control " id="validationCustom01" name="description" type="text" placeholder="description" required data-parsley-required-message="Pass is required">
+                        <div class="invalid-feedback">Please enter your valid</div>
+                        <div class="valid-feedback">
+                           Looks's Good! </div>
+                          </div>
+                          <div class="col-12">
+                            <label class="col-sm-12 col-form-label" for="inputPassword1">amount</label>
+                            <input class="form-control" id="inputPassword1" name="amount" placeholder="₹000" type="number" data-parsley-maxlength="5"  required data-parsley-required-message="Pass is required">
+                            <div class="invalid-feedback">Please enter your valid email</div>
+                          </div>
+                          <div class="col-12">
+                            <label class="col-sm-12 col-form-label" for="inputPassword1">date_time</label>
+                            <input class="form-control" name="date_time" type="datetime-local"  required data-parsley-required-message="date is required">
+                            <div class="invalid-feedback">Please enter your valid password</div>
+                          </div>
+                          <div class="col-12">
+                            <label class="col-sm-12 col-form-label" for="inputPassword1">expence_type</label>
+                            <input class="form-control" id="inputPassword1" name="expence_type" type="text"  required data-parsley-required-message="type of expence is required">
+                            <div class="invalid-feedback">Please enter your valid email</div>
+                          </div>
+                          <div class="col-12">
+                            <label class="col-sm-12 col-form-label" for="inputPassword1">paid_to</label>
+                            <input class="form-control" id="inputPassword1" name="paid_to" type="text"  required data-parsley-required-message="required">
+                            <div class="invalid-feedback">Please enter your valid email</div>
+                          </div>
+                      <br/>
+                                    <button class="btn btn-primary" type="submit">Submit form</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

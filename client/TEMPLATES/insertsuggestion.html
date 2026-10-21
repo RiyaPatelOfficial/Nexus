@@ -1,0 +1,51 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% block content %}
+<div >
+    
+    <section id="agent-profile" class="padding">
+        
+        <div class="container margin_bottom">
+            <div class="row">
+                <div class="col-md-12 bottom40">
+                    <h2 class="text-uppercase"> <span class="color_red"> Enter your Suggestion here </span></h2>
+                  </div>
+                <div class="col-md-14 col-sm-15 col-xs-12">
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <div class="agent-p-form">
+                            <div class="row">
+                                <form class="findus" method="post">
+              
+              
+                                  
+                                    {% csrf_token %}
+                                    <div class="col-md-12">
+                                        <div class="single-query">
+                                            <!-- <input type="text" placeholder="Massege" name="description"></textarea> -->
+                                            <textarea name="description" required data-parsley-required-message="enter description is required"></textarea>
+                                        </div>
+                                        <div class="col-md-12 col-sm-5">
+                                            
+                                            <input type="text" value="{{uname}}" name="suggested_by" hidden/>
+                                            <!-- <div class="single-query">                            
+                                              <select class="form-select" name="suggested_by" id="validationTooltip04" required="">
+                                                {% for data in hsmember %}
+                                              <option value="{{data.member_id}}">{{data.name}}</option>
+                                              {% endfor %}
+                                              </select>
+                                            </div> -->
+                                    </div>
+                                    <button type="submit" class="btn_fill">Add Yout Suggession</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+</section>
+</div>
+{% endblock %}

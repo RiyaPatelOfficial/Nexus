@@ -1,0 +1,83 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+        <div class="page-body">
+          <div class="container-fluid">
+            <div class="page-title">
+              <div class="row">
+                <div class="col-sm-6 col-12"> 
+                  <h2> Profile</h2>
+                </div>
+                <div class="col-sm-6 col-12">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="iconly-Home icli svg-color"></i></a></li>
+                    <li class="breadcrumb-item">Users</li>
+                    <li class="breadcrumb-item active"> Profile</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid">
+            <div class="edit-profile">
+              <div class="row">
+                
+                <div class="col-xl-15">
+                  <form class="card" method="post" >
+                    {% csrf_token %}
+                    <div class="card-header card-no-border pb-0">
+                      <h3 class="card-title mb-0">edit-profile</h3>
+                      <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
+                    </div>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-6 col-md-3">
+                          <div class="mb-3">
+                            <label class="form-label">Admin name</label>
+                            <input class="form-control" type="text" name="name"   value="{{e.name}}" placeholder="Username"/>
+                        </div>
+                    </div>
+                        <div class="col-sm-6 col-md-4">
+                          <div class="mb-3">
+                            <label class="form-label">Email address</label>
+                            <input class="form-control" type="email" name="email"   value="{{e.email}}" placeholder="Email"/>
+                            <input class="form-control" type="text"  hidden name="password"  value="{{e.password}}"  placeholder="password"/>
+                          </div>
+                        </div>
+                        
+                        <div class="col-sm-6 col-md-6">
+                          <div class="mb-3">
+                            <label class="form-label">house_no</label>
+                            <input class="form-control" type="text" name="house_no"  value="{{e.house_no}}"  placeholder="Company"/>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                          <div class="mb-3">
+                            <label class="form-label">block_no</label>
+                            <input class="form-control" type="text" name="block_no"  value="{{e.block_no}}"  placeholder="Last Name"/>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            <input class="form-control" type="text" value="{{e.member_id}}"  disabled placeholder="Home Address"/>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                          <div class="mb-3">
+                            <label class="form-label">contact</label>
+                            <input class="form-control" type="text" name="contact"   value="{{e.contact}}" placeholder="City"/>
+                          </div>
+                        </div>
+                        <div class="card-footer text-end">
+                          <!-- <a class="btn btn-primary " href="/profile/"> Edit Profile </a> -->
+                          <button class="btn btn-primary" type="submit">Update Profile</button>
+                        </div>
+                  </div>
+                </div>
+            </form>
+            </div>
+          </div>
+        </div>
+{% endblock %}

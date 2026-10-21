@@ -1,0 +1,46 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% block content %}
+<!--===== LOGIN =====-->
+<section id="login" class="padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="profile-login">
+          <div class="login_detail">
+            <div class="tab-content padding_b40 padding_t40">
+              <div role="tabpanel" class="tab-pane fade in active" id="home">
+                <h2>Reset Password!</h2>
+                <div class="agent-p-form">
+                  <div class="row">
+                    <form class="callus" method="post" action="/client/clientsetpass/">
+                      {% csrf_token %}
+                      <div class="col-md-12">
+                        <div class="single-query">
+                          <input type="number" name="otp" class="keyword-input" placeholder="OTP">
+                        </div>
+                        <div class="single-query">
+                          <input type="password" name="password" class="keyword-input" placeholder="password">
+                        </div>
+                        <div class="single-query">
+                          <input type="password" name="cpassword" class="keyword-input" placeholder="confirm password">
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <div class="query-submit-button">
+                          <button type="submit" class="btn_fill">Send OTP</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--===== #/LOGIN =====-->
+{% endblock %}

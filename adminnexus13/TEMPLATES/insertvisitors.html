@@ -1,0 +1,116 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"></script>
+
+<style>
+.parsley-errors-list {
+    color:RED;
+}
+</style>
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-title">
+      <div class="row">
+        
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header card-no-border pb-0">
+            <h3>Add visitor</h3>
+           
+          </div>
+          <div class="card-body">
+            <!-- form start -->
+            <!-- <form class="row g-3 needs-validation custom-input tooltip-valid validation-forms" method="post" novalidate="" > -->
+              {% csrf_token %}
+               <!-- expence -->
+               <div class="col-xl-6">
+                <div class="card">
+                  <div class="card-header card-no-border pb-0">
+                    <!-- <h3> ADD visitor</h3> -->
+                   
+                  </div>
+                  <div class="card-body">
+                    <form class="row g-3 needs-validation custom-input validation-forms" method="post" data-parsley-validate >
+                      <div class="col-12">
+                        <label class="form-label" for="validationCustom01">name</label>
+                        <input class="form-control " id="validationCustom01" name="name" type="text" placeholder="Mark" required data-parsley-required-message="required" >
+                        <div class="invalid-feedback">Please enter your valid</div>
+                        <div class="valid-feedback">
+                           Looks's Good! </div>
+                          </div>
+                          <div class="col-12">
+                            <label class="form-label" for="validationCustom01">contact_no</label>
+                            <input class="form-control " id="validationCustom01" name="contact_no" type="text" placeholder="Mark" required data-parsley-required-message="required" >
+                            <div class="invalid-feedback">Please enter your valid</div>
+                            <div class="valid-feedback">
+                               Looks's Good! </div>
+                              </div>
+                              <div class="col-12">
+                                <label class="form-label" for="validationCustom01">block_no</label>
+                                <input class="form-control " id="validationCustom01" name="block_no" type="text" placeholder="Mark" required data-parsley-required-message="required" >
+                                <div class="invalid-feedback">Please enter your valid</div>
+                                <div class="valid-feedback">
+                                   Looks's Good! </div>
+                                  </div>
+                                  <div class="col-12">
+                                    <label class="form-label" for="validationCustom01">house_no</label>
+                                    <input class="form-control " id="validationCustom01" name="house_no" type="text" placeholder="Mark" required data-parsley-required-message="required" >
+                                    <div class="invalid-feedback">Please enter your valid</div>
+                                    <div class="valid-feedback">
+                                       Looks's Good! </div>
+                                      </div>
+
+                      <div class="col-12">
+                        <label class="form-label" for="validationCustom01">description</label>
+                        <input class="form-control " id="validationCustom01" name="description" type="text" placeholder="Mark" required data-parsley-required-message="required" >
+                        <div class="invalid-feedback">Please enter your valid</div>
+                        <div class="valid-feedback">
+                           Looks's Good! </div>
+                          </div>
+                          
+                          <div class="col-12">
+                            <label class="col-sm-12 col-form-label" for="inputPassword1">date_time</label>
+                            <!-- <input class="form-control" id="inputPassword1"name="date_time" type="datetime" required=""> -->
+                            <input class="form-control" name="date_time" type="datetime-local" required data-parsley-required-message="required" >
+                            <div class="invalid-feedback">Please enter your valid password</div>
+                          </div>
+                          <div class="col-12">
+                            <label class="col-sm-12 col-form-label" for="inputPassword1">status</label>
+                            <!-- <input class="form-control" id="inputPassword1"name="date_time" type="datetime" required=""> -->
+                            <input class="form-control" name="status" type="status" required data-parsley-required-message="required" >
+                            <div class="invalid-feedback">Please enter your valid password</div>
+                          </div>
+                          <div class="col-md-3 position-relative">
+                            <label class="form-label" for="validationTooltip04">registered_by</label>
+                            <select class="form-select"  readonly name="registered_by" id="validationTooltip04" required data-parsley-required-message="required" >
+                              {% for data in e %}
+                            <option value="{{data.security_id}}">{{data.name}}</option>
+                            {% endfor %}
+                            </select>
+                            <div class="invalid-tooltip">Please select a valid state.</div>
+                          </div>
+                      <br/>
+              <div class="col-12 mt-2">
+                <button class="btn btn-primary" type="submit">Submit form</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

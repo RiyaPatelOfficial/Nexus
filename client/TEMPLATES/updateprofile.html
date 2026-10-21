@@ -1,0 +1,213 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% block content %} 
+
+<!--===== PROFILE =====-->
+<section id="agent-2-peperty" class="profile padding ">
+  
+  <div class="container-3"> 
+  
+    <div class="row">
+    	
+      <div class="col-md-4 col-sm-6 col-xs-12">
+      	<h2 class="text-uppercase">Edit your profile</h2>
+          <div class="agent-p-img">
+          </div>
+          <br/>
+          <br/>
+        </div>
+        
+        <div class="col-md-8">
+
+          <div class="agent-p-form">
+              
+            <div class="row">
+              <form method="post">
+                {% csrf_token %}
+                <div class="col-md-12 clearfix">
+                  <div class="single-query">
+                    <label>Your Name:</label>
+                    <input type="text" name="name" value="{{e.name}}" placeholder="Bohdan Kononets" class="keyword-input">
+                  </div>
+                </div>
+                <div class="col-md-12 clearfix">
+                  <div class="single-query">
+                    <label>House NO:</label>
+                    <input type="text" name="house_no" value="{{e.house_no}}" placeholder="Bohdan Kononets" class="keyword-input">
+                  </div>
+                </div>
+                <div class="col-md-12 clearfix">
+                  <div class="single-query">
+                  <label>Block No:</label>
+                    <input type="text" name="block_no" value="{{e.block_no}}" placeholder="Bohdan Kononets" class="keyword-input">
+                  </div>
+                </div>
+                <div class="col-md-12 clearfix">
+                  <div class="single-query">
+                    <label>contact:</label>
+                    <input type="text" name="contact"  value="{{e.contact}}" placeholder="(+01) 34 56 7890" class="keyword-input">
+                  </div>
+                </div>
+                <div class="col-md-12 clearfix">
+                  <div class="single-query">
+                  <label>Email :</label>
+                    <input type="text" name="email" value="{{e.email}}" placeholder="(+033) 34 56 7890" class="keyword-input">
+                    <input type="text" name="password" hidden value="{{e.password}}" placeholder="(+033) 34 56 7890" class="keyword-input">
+                  </div>
+                </div>
+                
+                <input type="submit" value="submit" placeholder="(+033) 34 56 7890" class="header-login">
+                  
+              </form>
+                
+              </div>
+              
+            </div>
+            
+      </div>
+      
+      
+
+   </div>
+
+
+   
+  <div class="container">
+    
+    
+
+  	<div class="row">
+    	<div class="collapse" id="collapseExample">
+      <div class="well">
+        <div class="agent-p-form social-network">
+        
+            <div class="col-md-5 col-sm-5 col-xs-12">  
+              <h3 class="text-uppercase  bottom40">My Social <span class="color_red">Network</span></h3>
+              <div class="row">
+                <form action="#">
+                  <div class="col-md-12">
+                    <div class="single-query">
+                    <label>Facebook:</label>
+                      <input type="text" placeholder="http://facebook.com" class="keyword-input">
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="single-query">
+                    <label>Twitter:</label>
+                      <input type="text" placeholder="http://twitter.com" class="keyword-input">
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="single-query">
+                    <label>Google Plus:</label>
+                      <input type="text" placeholder="http://google-plus.com" class="keyword-input">
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-12">
+                    <div class="single-query">
+                    <label>Linkedin:</label>
+                      <input type="text" placeholder="http://linkedin.com" class="keyword-input">
+                    </div>
+                  </div>
+                                    
+                </form>
+                <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                  <div class="query-submit-button">
+                    <input type="submit" class="btn_fill" value="submit now">
+                  </div>
+                </div>
+              </div>
+             </div> 
+            <div class="col-md-1 hidden-xs"></div>
+            <div class="col-md-6 col-sm-6 col-xs-12">  
+              <h3 class="text-uppercase  bottom40">Change Your <span class="color_red">Password</span></h3>
+              <div class="row">
+                <form action="#">
+                  <div class="col-md-12">
+                    <div class="single-query">
+                    <label>Current Password</label>
+                      <input type="text" placeholder="" class="keyword-input">
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="single-query">
+                    <label>New Password</label>
+                      <input type="text" placeholder="" class="keyword-input">
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="single-query">
+                    <label>Confirm Password</label>
+                      <input type="text" placeholder="" class="keyword-input">
+                    </div>
+                  </div>
+                                                      
+                </form>
+                <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                  <div class="query-submit-button">
+                    <input type="submit" class="btn_fill" value="submit now">
+                  </div>
+                </div>
+              </div>
+             </div>
+      </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+<!--===== #/PROFILE =====-->
+
+
+<!-- CONTACT -->
+<section id="contact" class="bg-color-red">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+        <div class="get-tuch">
+          <i class="icon-telephone114"></i>
+          <ul>
+            <li>
+              <h4 class="p-font-17">Phone Number</h4>
+            </li>
+            <li>
+              <p class="p-font-15">+1 900 234 567 - 68</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+        <div class="get-tuch">
+          <i class="icon-icons74"></i>
+          <ul>
+            <li>
+              <h4 class="p-font-17">Victoria Hall,</h4>
+            </li>
+            <li>
+              <p class="p-font-15">Idea Homes, australia</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+        <div class="get-tuch">
+          <i class=" icon-icons142"></i>
+          <ul>
+            <li>
+              <h4 class="p-font-17">Email Address</h4>
+            </li>
+            <li>
+              <p class="p-font-15">info@ideahomes.com</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--CONTACT-->
+
+
+<!--===== FOOTER =====-->
+{% endblock %}

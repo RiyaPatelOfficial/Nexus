@@ -1,0 +1,55 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+        <div class="page-body">
+          <div class="container-fluid">
+            <div class="page-title">
+              <div class="row">
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header pb-0 card-no-border">
+                <h3>maintenance_payment</h3>
+              </div>
+              <div class="card-body">
+                <div class="dt-ext table-responsive">
+                  <table class="display" id="export-button">
+                    <thead>
+                      <tr>
+                        <th>payment_id</th>
+                        <th>member_name</th>
+                        <th>date_time</th>
+                        <th>amount</th>
+                        <th>description</th>
+                        <!-- <th>payment_status</th> -->
+                        <!-- <th>name</th> -->
+                        <!-- <th>Action</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                     
+                      {% for data in e %}
+                       <tr>
+                        <td>{{data.payment_id}}</td>
+                        <td>{{data.member_id.name}}</td>  
+                        <td>{{data.date_time}}</td>
+                        <td>{{data.amount}}</td>
+                        <td>{{data.description}}</td>
+                        <!-- <td>{{data.payment_status}}</td> -->
+                          
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                   
+                     
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends                 -->
+        </div>
+{% endblock %}

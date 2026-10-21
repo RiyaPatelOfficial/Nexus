@@ -1,0 +1,68 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+        <div class="page-body">
+          <div class="container-fluid">
+            <div class="page-title">
+              <div class="row">
+                
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header pb-0 card-no-border">
+                <h3>Visitors</h3>
+                <br>
+                <a href="/insertvisitors/" class="btn btn-primary buttons-pdf buttons-html5" >Add expence</a>
+
+              </div>
+              <div class="card-body">
+                <div class="dt-ext table-responsive">
+                  <table class="display" id="export-button">
+                    <thead>
+                      <tr>
+                        <th>visitor_id</th>
+                        <th>visitor name</th>
+                        <th>contact_no</th>
+                        <th>house_no</th>
+                        <th>block_no</th>
+                        <th>description</th>
+                        <th>date_time</th>
+                        <th>registered_by</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for data in e %}
+                       <tr>
+                        <td>{{data.visitor_id}}</td>
+                        <td>{{data.name}}</td>  
+                        <td>{{data.contact_no}}</td>
+                        <td>{{data.house_no}}</td>
+                        <td>{{data.block_no}}</td>
+                        <td>{{data.description}}</td>
+                        <td>{{data.date_time}}</td>
+                        <td>{{data.registered_by.name}}</td>
+                        <td>
+                          <ul class="action"> 
+                            <li class="edit"> <a href="/updatevisitors/{{data.visitor_id}}"><img src="{% static '/images/border_color_24dp_999999_FILL0_wght400_GRAD0_opsz24.svg' %}" height="20px" width="30px" /></a></li>
+                            <!-- <li class="delete"><a href="#"><i class="icon-trash"></i></a></li> -->
+                            <!-- <li class="delete"><a href="/delexp/{{data.expence_id}}"><img src="{% static '/images/.svg' %}" height="20px" width="30px" /></a></li> -->
+
+                          </ul>
+                        </td> 
+                      </tr>
+                      {% endfor %}
+                      
+                    </tbody>
+                    
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends                 -->
+        </div>
+{% endblock %}

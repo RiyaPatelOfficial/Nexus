@@ -1,0 +1,33 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% block content %}
+
+<section id="faqs" class="padding">
+	<div class="container">
+    	<div class="row">
+        
+        	<div class="col-md-6 col-sm-6 col-xs-12">
+            
+                {% for data in e %}
+            	<div class="faq-text" >
+                 
+                    <h5>expence_id  :    {{data.expence_id}}</h5>
+                    <h5>amount  :    {{data.amount}}</h5>
+                    
+                    <h5>Details of expence  : <p>   {{data.description}}</p></h5>
+                    <h5>date_time  :    {{data.date_time}}</h5>
+                    <h5>expence_type  :    {{data.expence_type}}</h5>
+                    <h5>paid_to  :    {{data.paid_to}}</h5> 
+                    <br/>
+                    <hr class="red">  	
+                    <hr class="red">  	
+                    <hr class="">  	
+                </div>
+                {% endfor %}
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+{% endblock %}

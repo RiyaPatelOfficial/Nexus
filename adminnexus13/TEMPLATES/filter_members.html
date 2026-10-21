@@ -1,0 +1,57 @@
+{% extends 'header.html' %}
+{% block content %}
+<div class="container-fluid">
+    <h2>Filter Members by House and Block</h2>
+    
+    <!-- House and Block Selector Form -->
+    <form method="get" action="/filtermembers/">
+        <label for="house_no">House No:</label>
+        <input type="text" id="house_no" name="house_no" value="{{ house_no|default:'' }}" required>
+
+        <label for="block_no">Block No:</label>
+        <input type="text" id="block_no" name="block_no" value="{{ block_no|default:'' }}" required>
+        
+        <button class="btn btn-primary" type="submit">Filter</button>
+    </form>
+
+    {% if house_no and block_no %}
+        <br/>
+        <h4>Members and Family for House {{ house_no }} - Block {{ block_no }}</h4>
+        <p>Total Members in the House: {{ total_members }}</p>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Member ID</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Family Members</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in members %}
+                    <tr>
+                        <td>{{ member.member_id }}</td>
+                        <td>{{ member.name }}</td>
+                        <td>{{ member.contact }}</td>
+                        <td>{{ member.email }}</td>
+                        <td>
+                            <ul>
+                                {% for family in member.family_member_set.all %}
+                                    <li>{{ family.member_name }} ({{ family.relationship }}) - {{ family.contact }}</li>
+                                {% empty %}
+                                    <li>No family members</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <br/>
+        <p>Please select a house and block to view members.</p>
+    {% endif %}
+</div>
+{% endblock %}

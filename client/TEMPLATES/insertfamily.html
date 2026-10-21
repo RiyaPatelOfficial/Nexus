@@ -1,0 +1,99 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% block content %} 
+<script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"></script>
+
+<style>
+.parsley-errors-list {
+    color:red;
+}
+</style>
+<!--===== LOGIN =====-->
+<section id="login" class="padding">
+  <div class="container">
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+          <tr>
+              <th>member_name</th>
+              <th>contact_no</th>
+              <th>relationship</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for data in e %}
+          <tr>
+              <td>{{data.member_name}}</td>
+              <td>{{data.contact}}</td>
+              <td>{{data.relationship}}</td>
+          </tr>
+          {% endfor %}
+          <!-- Add more rows as needed -->
+      </tbody>
+  </table>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="profile-login">
+          <div class="login_detail">
+            <!-- Tab panes -->
+            <div class="tab-content padding_b40 padding_t40">
+              <div    class="tab-pane fade in active" id="profile">
+                <h2>Add your family </h2>
+                <div class="agent-p-form">
+                  <div class="row">
+                    <form class="callus" method="post" data-parsley-validate>
+                      {% csrf_token %}
+                      <div class="col-md-12">
+                        <div class="single-query">
+                            <input type="text" class="keyword-input"  name="member_name" placeholder="FULL name" required data-parsley-required-message="fullName is required" >
+                        </div>
+                        <div class="single-query">
+                            <input type="text" class="keyword-input" hidden name="member_id" placeholder="FULL name" value="{{uname}}"  >
+                        </div>
+                        
+                        <div class="col-md-12 col-sm-5" >
+                            <div class="single-query">                        
+                              <select class="selectpicker" name="relationship" placeholder="select member" data-live-search="true" tabindex="-98" required data-parsley-required-message="relationship is required" >
+                                <option value="" disabled selected hidden>Relationship</option>
+                                <option class="active" value="BROTHER">BROTHER</option>
+                                <option class="active" value="SISTER">SISTER</option>
+                                <option class="active" value="MOTHER">MOTHER</option>
+                                <option class="active" value="FATHER">FATHER</option>
+                                <option class="active" value="MOTHER-IN-LAW ">MOTHER-IN-LAW</option>
+                                <option class="active" value="FATHER-IN-LAW">FATHER-IN-LAW</option>
+                                <option class="active" value="WIFE">WIFE</option>
+                                <option class="active" value="HUSBAND">HUSBAND</option>
+                                <option class="active" value="CHILD">CHILD</option>
+                                <option class="active" value="GRANDCHILD">GRANDCHILD</option>
+                              </select></div>
+                            </div>
+                          </div>
+                     </div>
+                     <div class="single-query">
+                      <input type="tel" class="keyword-input"  name="contact"  placeholder="CONTECT NUMBER" data-parsley-maxlength="10" required data-parsley-required-message="contact is required" >
+                    <br>
+                    </div>
+                      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <div class="query-submit-button">
+                          <button type="submit" class="btn_fill">add family member </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</section>
+<!--===== #/LOGIN =====-->
+{% endblock %}

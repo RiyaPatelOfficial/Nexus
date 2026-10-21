@@ -1,0 +1,77 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% block content %}
+
+<!--===== PAGE TITLE =====-->
+<div class="page-title page-main-section parallaxie">
+  <div class="container padding-bottom-top-120 text-uppercase text-center">
+    <div class="main-title">
+      <h1>Event Listing</h1>
+      <div class="line_4"></div>
+      <div class="line_5"></div>
+      <div class="line_6"></div>
+      </div>
+  </div>
+</div>
+<!--PAGE TITLE -->
+
+
+<!-- Agent-Profile Start -->
+              
+
+<section id="agent-profile" class="padding">
+  <div class="container margin_bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 bottom40">
+        <h2 class="text-uppercase">Society <span class="color_red">Event LIST</span></h2>
+        <div class="line_1"></div>
+        <div class="line_2"></div>
+        <div class="line_3"></div>
+      </div>
+    </div>
+    <div class="row">
+      {% for data in e %}
+      <div class="col-md-6 col-sm-6">
+        <div class="project1">
+          <div class="col-md-12 col-sm-12 col-xs-12 padding_L_0 project-images">
+            <div class="gri">
+              <figure class="effect-layla">
+                <img src="/static/client_assets/img/{{data.epost}}" alt="img">
+              <!-- <div class="item"><img src="/static//img/{{data.img_path}}" alt="this is img" /></div> -->
+                
+                <figcaption> </figcaption>
+              </figure>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 project-owl-slidee padding_L_0 project-owl-slideee">
+              <div class="item background-color-white">
+                <h4>{{data.event_name}}</h4>
+                <div class="small-title">
+                  <div class="line1"></div>
+                  <div class="line2"></div>
+                  <div class="clearfix"></div>
+                </div>
+                
+                <a href="/client/eventdetails/{{data.event_id}}" class="header-login">See Gallery</a> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+    <div class="row padding-b-80">
+      <div class="col-md-12">
+        <ul class="pager">
+          <li><a href="#">1</a></li>
+          <li class="active"><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- Agent-Profile End -->
+{% endblock %}

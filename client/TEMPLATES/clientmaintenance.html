@@ -1,0 +1,48 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% block content %} 
+
+<section id="agent-2-peperty" class="profile padding ">
+    <div class="container-3"> 
+          <h2 style="text-align: center;"> Maintenance list </h2>
+          <div class="container-5"><br/>
+        </div>
+      <div class="row">
+        <div class="">
+            <div class="agent-p-img">
+            </div>
+            <br/>
+            <br/>
+          </div>
+        <div class="table-responsive">
+            <h2></h2>
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Month</th>
+                        <th>description</th>
+                        <th>Amount</th>
+                        <th>date_time</th>
+                        <!-- <th>registered_by</th> -->
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in e %}
+                    <tr>
+                        <td>{{data.month}}</td>
+                        <td>{{data.description}}</td>
+                        <td>{{data.amount}}</td>
+                        <td>{{data.date_time}}</td>
+                        <!-- <td>{{data.registered_by.name}}</td> -->
+                       
+                    </tr>
+                    {% endfor %}
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a href="/client/clientpayment/" class="header-login"><i class="">PAY NOW</i></a>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+        <div class="page-body">
+          <div class="container-fluid">           
+            <div class="page-title">
+              <div class="row">
+                <div class="col-sm-6 col-12">
+                  <h2>Event Gallary</h2>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-body">
+                <h3>
+                  <a href="/insertevent_gallery/" class="btn btn-primary buttons-pdf buttons-html5" >Add Img in Gallary</a>
+                  
+                </h3>
+                <br>
+                <div class="dt-ext table-responsive">
+                  <table class="display" id="export-button">
+                    <thead>
+                      <tr>
+                        <th>gallery_id</th>
+                        <th>event_id</th>
+                        <th>img_path</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for data in e %}
+                       <tr>
+                        <td>{{data.gallery_id}}</td>
+                        <td>{{data.event_id.event_name}}</td>  
+                        <td>{{data.img_path}}</td>
+                        <td> 
+                          <ul class="action"> 
+                            <li class="delete"><a href="/delevent_gallery/{{data.gallery_id}}"><img src="{% static '/images/delete_24dp_EA3323_FILL1_wght400_GRAD0_opsz24.svg' %}" height="20px" width="30px" /></a></li>
+                          </ul>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                    
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends                 -->
+        </div>
+{% endblock %}

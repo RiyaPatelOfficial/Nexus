@@ -1,0 +1,32 @@
+{% extends 'headers.html' %}
+{% block content %}
+
+<div class="container-3">
+    <div class="row">
+<div class="container-fluid">
+  <h2>Notifications</h2>
+  <div class="card">
+    <div class="card-body">
+      {% if notifications %}
+        <ul class="list-group">
+          {% for notification in notifications %}
+            <li class="list-group-item">
+              <strong>{{ notification.notification_date|date:"Y-m-d H:i" }}</strong> - 
+              {{ notification.description }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No notifications available.</p>
+      {% endif %}
+    </div>
+  </div>
+  <a href="/client/clientindex/" class="btn btn-danger">
+    home
+   
+  </a>
+</div>
+</div>
+</div>
+
+{% endblock %}

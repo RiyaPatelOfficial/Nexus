@@ -1,0 +1,132 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% load mathfilters %}
+{% block content %} 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const baseAmount = 500;  // Base maintenance charge
+      const lateFee = 50;      // Late payment charge
+      const currentMonth = new Date().getMonth() + 1; // Get current month (1-12)
+      const monthSelect = document.getElementById("month");
+      const amountInput = document.querySelector("input[name='amount']");
+      let razorpayScript = document.querySelector("script[src^='https://checkout.razorpay.com']");
+
+      function updateAmount() {
+          let selectedMonth = parseInt(monthSelect.value);
+          let finalAmount = baseAmount;
+
+          // If selected month is before the current month, add ₹50 late fee
+          if (selectedMonth < currentMonth) {
+              finalAmount += lateFee;
+          }
+
+          // Update the hidden input field for amount
+          amountInput.value = finalAmount;
+
+          // Update Razorpay script dynamically
+          if (razorpayScript) {
+              let newScript = document.createElement("script");
+              newScript.src = "https://checkout.razorpay.com/v1/checkout.js";
+              newScript.dataset.key = "rzp_test_2jqOBolRZODUOm";
+              newScript.dataset.amount = finalAmount * 100; // Convert to paise
+              newScript.dataset.currency = "INR";
+              newScript.dataset.order_id = "{{payment.id}}";
+              newScript.dataset.buttontext = "Pay with Razorpay";
+              newScript.dataset.name = "Nexus13";
+              newScript.dataset.url_root = "https://eneqd3r9zrjok.x.pipedream.net/";
+              newScript.dataset.description = "Maintenance Payment";
+              newScript.dataset.image = "/client_static/assets/images/shop/logo2.png";
+              newScript.dataset.prefillName = "vedang";
+              newScript.dataset.prefillEmail = "gajjardhruv0009@gmail.com";
+              newScript.dataset.themeColor = "#F37254";
+
+              // Remove old script and add new script
+              razorpayScript.remove();
+              document.body.appendChild(newScript);
+              razorpayScript = newScript;
+          }
+      }
+
+      // Add event listener to dropdown
+      monthSelect.addEventListener("change", updateAmount);
+
+      // Initialize amount on page load
+      updateAmount();
+  });
+</script>
+
+  
+
+<section id="agent-2-peperty" class="profile padding ">
+  <div class="container-3"> 
+    <div class="row">
+<div class="col-sm-9 col-md-9">
+<div class="info-block" id="payment">
+  
+              <div class="row">
+                <div class="col-md-12 bottom40">
+                  <h2 class="text-uppercase">maintenance <span class="color_red">Payment</span></h2>
+                  <div class="line_1"></div>
+                  <div class="line_2"></div>
+                  <div class="line_3"></div>
+                </div>
+              </div>
+              <div class="row">
+                <form class="text-center border border-light p-5" action="/client/paysuccess/" method="POST">
+                  {% csrf_token %}
+                  
+                  <input type="hidden" name="member_id" value="{{request.session.id}}" required>
+                  <input type="hidden" name="date_time" value="{{current_date}}" required>
+                  
+                  <!-- Dynamic Payment Amount -->
+                  <input type="hidden" name="amount" id="payment-amount" value="500" required>
+                  
+                  <!-- <p>Final Amount: ₹<span id="amount-display">500</span></p> -->
+                  
+                  <input type="hidden" name="payment_status" value="1">
+                  
+                  <input type="text" name="description" required class="form-control mb-4" placeholder="Enter your remark month here">
+                  
+                  <label>Select Payment Month</label>
+                  <select id="month" name="month">
+                      <option value="1" {% if 1 in paid_months %}disabled{% endif %}>January</option>
+                      <option value="2" {% if 2 in paid_months %}disabled{% endif %}>February</option>
+                      <option value="3" {% if 3 in paid_months %}disabled{% endif %}>March</option>
+                      <option value="4" {% if 4 in paid_months %}disabled{% endif %}>April</option>
+                      <option value="5" {% if 5 in paid_months %}disabled{% endif %}>May</option>
+                      <option value="6" {% if 6 in paid_months %}disabled{% endif %}>June</option>
+                      <option value="7" {% if 7 in paid_months %}disabled{% endif %}>July</option>
+                      <option value="8" {% if 8 in paid_months %}disabled{% endif %}>August</option>
+                      <option value="9" {% if 9 in paid_months %}disabled{% endif %}>September</option>
+                      <option value="10" {% if 10 in paid_months %}disabled{% endif %}>October</option>
+                      <option value="11" {% if 11 in paid_months %}disabled{% endif %}>November</option>
+                      <option value="12" {% if 12 in paid_months %}disabled{% endif %}>December</option>
+                  </select>
+              
+                  <!-- Razorpay Payment Button -->
+                  <script src="https://checkout.razorpay.com/v1/checkout.js"
+                      data-key="rzp_test_2jqOBolRZODUOm"
+                      data-amount="{{500|mul:100}}"
+                      data-currency="INR"
+                      data-description="Maintenance Payment"
+                      data-image="/client_static/assets/images/shop/logo2.png"
+                      data-prefill.name="dhruv"
+                      data-prefill.email="gajjardhruv0009@gmail.com"
+                      data-theme.color="#F37254">
+                  </script>
+              
+              </form>
+                        <!-- <button type="button" class="btn_fill"><i class="icon fa fa-cart-arrow-down"></i> Submit Property</button> -->
+                      </div>
+                      </div>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% load mathfilters %}
+{% block content %} 
+
+<section id="agent-2-peperty" class="profile padding ">
+    <div class="container-3"> 
+        <!-- <div id="project-filter" class="cbp-l-filters-alignCenter">
+            <a href="/client/clientviewvisitor/"><div style="color: red;"  class="cbp-filter-item-active cbp-filter-item">Show All</div></a>
+            <a href="/client/todayvisit"><div style="color: red;"  class="cbp-filter-item">today </div></a>
+          </div> -->
+      <div class="row">
+        <div class="col-md-2 col-sm-6 col-xs-15">
+            <h2> my booking  </h2>
+            <div class="agent-p-img">
+            </div>
+            <br/>
+            <br/>
+          </div>
+        <div class="table-responsive">
+            <h2></h2>
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>start_date</th>
+                        <th>end_date</th>
+                        <th>request_date</th>
+                        <th>description</th>
+                        <th>booking_status</th>
+                        <th>payment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in e %}
+                    <tr>
+                        <td>{{data.start_date}}</td>
+                        <td>{{data.end_date}}</td>
+                        <td>{{data.request_date}}</td>
+                        <td>{{data.description}}</td>
+                        {% if data.booking_status == "0" %}
+                            <td>pending...</td>
+                            <td>pending...</td>
+                        {% elif data.booking_status == "1" and data.payment_status == "0" %}
+                        <td>
+                            approved
+                        </td>
+                        <td>
+                             <form class="text-center border border-light p-5" action="/client/clubhousebooked/{{data.clubhouse_booking_id}}" method="POST">
+                            {% csrf_token %}
+                              
+                                <input type="hidden" name="member_id" value="{{request.session.id}}" id="name" required class="form-control mb-4" placeholder="Name">
+                                <input type="hidden" name="start_date" value="{{data.start_date}}" id="name" required class="form-control mb-4" placeholder="Name">
+                                <input type="hidden" name="end_date" value="{{data.end_date}}" id="name" required class="form-control mb-4" placeholder="Name">
+                                <input type="hidden" name="request_date" value="{{request_date}}" id="name" required class="form-control mb-4" placeholder="Name">
+                                <input type="hidden" name="description" value="{{data.description}}" id="name" required class="form-control mb-4" placeholder="Name">
+                                <input type="hidden" name="amount" value="500" id="name" required class="form-control mb-4" placeholder="Name">
+                                <input type="hidden" name="payment_status" value="1" id="name" required class="form-control mb-4" placeholder="Name">
+                                <input type="hidden" name="booking_status" value="{{data.booking_status}}" id="name" required class="form-control mb-4" placeholder="Name">
+
+                            <script src="https://checkout.razorpay.com/v1/checkout.js"
+                                data-key="rzp_test_2jqOBolRZODUOm"
+                                data-amount="{{500|mul:100}}"
+                                data-currency="INR"
+                                data-order_id="{{payment.id}}"
+                                data-buttontext="Pay with Razorpay"
+                                data-name="Nexus13"
+                                data-url_root= "https://eneqd3r9zrjok.x.pipedream.net/",
+                                data-description="chbooking payment"
+                                data-image="/client_static/assets/images/shop/logo2.png"
+                                data-prefill.name="vedang"
+                                data-prefill.email="gajjardhruv0009@gmail.com"
+                                data-theme.color="red">
+                            </script> 
+                          </form>
+                        </td>
+                        {% elif  data.booking_status == "1" and  data.payment_status == "1"  %}
+                        <td>
+                            approved
+                        </td>
+                        <td>
+                            success    
+                        </td>
+                        {% else %}
+                        <td>
+                            refuced
+                        </td> 
+                        <td>
+                            refuced
+                        </td>  
+                        {% endif %}
+                   </tr>
+                    {% endfor %}
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% block content %} 
+
+<!--===== PROFILE =====-->
+<section id="agent-2-peperty" class="profile padding ">
+  <div class="container-3"> 
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-xs-12">
+      	<h2 class="text-uppercase">my profile</h2>
+          <div class="agent-p-img">
+              <!-- <img src="{% static 'client_assets/images/profile.png'%}" class="img-responsive" alt="image"/> -->
+              <!-- <p>Minimum 215px x 215px<span>*</span></p> -->
+          </div>
+          <br/>
+          <br/>
+         <a href="/client/clienteditprofile/{{e.member_id}}" class="header-login"></i>Edit</a>
+          <br/>
+          <br/>
+          <br/>
+         <a href="/client/clientfamily/" class="header-login"></i>ADD FAMILY MEMBER</a>
+      </div>
+      <div class="col-md-8">
+          <div class="agent-p-form">
+            <div class="row">
+              <form action="#">
+                <div class="col-md-12 clearfix">
+                  <div class="single-query">
+                  <label>Your Name:</label>
+                    <input type="text" value="{{e.name}}"  disabled placeholder="Bohdan Kononets" class="keyword-input">
+                  </div>
+                </div>
+                <div class="col-md-12 clearfix">
+                  <div class="single-query">
+                  <label>House NO:</label>
+                    <input type="text" value="{{e.house_no}}" disabled  placeholder="Bohdan Kononets" class="keyword-input">
+                  </div>
+                </div>
+                <div class="col-md-12 clearfix">
+                  <div class="single-query">
+                  <label>Block No:</label>
+                    <input type="text" value="{{e.block_no}}" disabled placeholder="Bohdan Kononets" class="keyword-input">
+                  </div>
+                </div>
+                <div class="col-md-12 clearfix">
+                  <div class="single-query">
+                  <label>contact:</label>
+                    <input type="text"  value="{{e.contact}}"disabled  placeholder="(+01) 34 56 7890" class="keyword-input">
+                  </div>
+                </div>
+                <div class="col-md-12 clearfix">
+                  <div class="single-query">
+                  <label>Email :</label>
+                    <input type="text" value="{{e.email}}" disabled placeholder="(+033) 34 56 7890" class="keyword-input">
+                  </div>
+                </div>
+              </form>
+              </div>
+          </div>
+      </div>
+      
+   </div>
+   </div>
+</section>
+<!--===== #/PROFILE =====-->
+
+
+<!-- CONTACT -->
+
+<!--CONTACT-->
+
+
+<!--===== FOOTER =====-->
+{% endblock %}

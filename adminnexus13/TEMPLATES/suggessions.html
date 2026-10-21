@@ -1,0 +1,54 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+        <div class="page-body">
+          <div class="container-fluid">
+            <div class="page-title">
+              <div class="row">
+                <div class="col-sm-6 col-12">
+                  <h2>Suggession</h2>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header pb-0 card-no-border">
+                <a href="/insertsuggession/" class="btn btn-primary buttons-pdf buttons-html5" >Add your suggession</a>
+
+              </div>
+              <div class="card-body">
+                <div class="dt-ext table-responsive">
+                  <table class="display" id="export-button">
+                    <thead>
+                      <tr>
+                        <th>suggetion_id</th>
+                        <th>description</th>
+                        <th>Suggession BY</th>
+                        <th>Action</th>
+                      </thead>
+                      {% for data in e %}
+                      <tr>
+                        <td>{{data.suggetion_id}}</td>
+                        <td>{{data.description}}</td>
+                        <td>{{data.suggested_by.name}}</td>
+                        <td> 
+                          <ul class="action"> 
+                            <li class="edit"> <a href="/updatesuggession/{{data.suggetion_id}}"><img src="{% static '/images/border_color_24dp_999999_FILL0_wght400_GRAD0_opsz24.svg' %}" height="20px" width="30px" /></a></li>
+                            <li class="delete"><a href="/delete/{{data.suggetion_id}}"><img src="{% static '/images/delete_24dp_EA3323_FILL1_wght400_GRAD0_opsz24.svg' %}" height="20px" width="30px" /></a></li>
+                          </ul>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                    
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends                 -->
+        </div>
+{% endblock %}

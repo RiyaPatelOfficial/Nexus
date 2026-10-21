@@ -1,0 +1,78 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% block content %}
+<script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"></script>
+
+<style>
+.parsley-errors-list {
+    color:red;
+}
+</style>
+<!--===== LOGIN =====-->
+<section id="login" class="padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="profile-login">
+          <div class="login_detail">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li><a href="/client/clientlogin/" class="header-login"> Login </a></li>
+              <li><a href="/client/clientregister/" class="header-login"> Register</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content padding_b40 padding_t40">
+              <div role="tabpanel" class="tab-pane fade in active" id="home">
+                <h2>Welcome Back!</h2>
+                <div class="agent-p-form">
+                  <div class="row">
+                    <form class="callus" method="post" data-parsley-validate>
+                      {% csrf_token %}
+                      <div class="col-md-12">
+                        <div class="single-query">
+                          <input type="text" class="keyword-input"  name="email" placeholder="Email" required data-parsley-required-message="email is required">
+                        </div>
+                        <div class="single-query">
+                           <input type="password" class="keyword-input" name="password" placeholder="password" required data-parsley-required-message="password is required">
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <input class="form-check-input" id="solid6"  name="cremember" type="checkbox" >
+                          <label class="form-check-label" for="solid6">Remember password</label>
+                          <!-- <input type="checkbox"  name="remember" placeholder="password" ><span>Remember Me</span></input> -->
+                        </div>
+                      <div class="col-md-6 text-right">
+                          <a href="/client/clientforget/" class="lost-pass">Lost your password?</a>
+                        </div>
+                        <a class="link"  style="text-align: center; color: red;">
+                          {% for data in messages %}
+                              
+                          {{data}}
+                          
+                          {% endfor %}
+                          </a>
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                          <br/>
+                          <div class="query-submit-button">
+                            <button type="submit" class="btn_fill">submit now</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--===== #/LOGIN =====-->
+{% endblock %}

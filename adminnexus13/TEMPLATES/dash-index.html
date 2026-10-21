@@ -1,0 +1,222 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-title">
+      <div class="row">
+        <div class="col-sm-6 col-12"> 
+          <h2>ADMIN Dashboard</h2>
+          <p class="mb-0 text-title-gray">Welcome back! Let’s start </p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid default-dashboard">
+    <div class="row">
+      <div class="col-xl-4 proorder-xxl-1 col-sm-6 box-col-6">
+        <div class="card welcome-banner">
+          <div class="card-header p-0 card-no-border">
+            <div class="welcome-card"><img class="w-100 img-fluid" src="{% static '/images/dashboard-1/welcome-bg.png'%}" alt=""/>
+              <img class="position-absolute img-1 img-fluid" src="{% static '/images/dashboard-1/img-1.png'%}" alt=""/>
+              <img class="position-absolute img-2 img-fluid" src="{% static '/images/dashboard-1/img-2.png'%}" alt=""/>
+              <img class="position-absolute img-3 img-fluid" src="{% static '/images/dashboard-1/img-3.png'%}" alt=""/>
+              <img class="position-absolute img-4 img-fluid" src="{% static '/images/dashboard-1/img-4.png'%}" alt=""/>
+              <img class="position-absolute img-5 img-fluid" src="{% static '/images/dashboard-1/img-5.png'%}" alt=""/></div>
+          </div>
+          <div class="card-body">
+            <div class="d-flex align-center">
+              <h1>Hello {{request.session.adminname}}  <img src="{% static '/images/dashboard-1/hand.png" alt=""/></h1>
+            </div>
+            <p> Welcome back!.</p>
+            <div class="d-flex align-center justify-content-between"><a class="btn btn-pill btn-primary" href="#">Whats New!</a><span> 
+                <svg class="stroke-icon">
+                  <use href="https://admin.pixelstrap.net/admiro/assets/svg/icon-sprite.svg#watch"></use>
+                </svg> </span></div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-xxl-3 col-xl-4 proorder-xxl-2 col-sm-6 box-col-6">
+        <div class="card earning-card">
+          <div class="card-header pb-0 card-no-border">
+            <div class="header-top">
+              <h3>Earnings Trend </h3>
+              <div class="dropdown">
+                <button class="btn dropdown-toggle" id="userdropdown3" type="button" data-bs-toggle="dropdown" aria-expanded="false">Monthly</button>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown3"><a class="dropdown-item" href="#">Weekly</a><a class="dropdown-item" href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body pb-0">
+            <div class="d-flex align-center gap-3">
+              <h2>$4,875</h2><span class="text-primary">
+                 36.28%
+                <svg class="stroke-icon stroke-primary">
+                  <use href="https://admin.pixelstrap.net/admiro/assets/svg/icon-sprite.svg#arrow-down"></use>
+                </svg></span>
+            </div>
+            <div id="earnings-chart"></div>
+          </div>
+        </div>
+      </div> -->
+      
+      
+      <div class="col-xxl-3 col-xl-4 proorder-xxl-9 col-md-6 box-col-5">
+        <!-- <div class="card">
+          <div class="card-header card-no-border pb-0">
+            <div class="header-top">
+              <h3>Audit log</h3>
+              <div class="dropdown icon-dropdown">
+                <button class="btn" id="userdropdown4" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></button>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown4"><a class="dropdown-item" href="#">Weekly</a><a class="dropdown-item" href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body audit-log"> 
+            <ul> 
+              <li class="d-flex align-items-center gap-2">
+                <div class="flex-shrink-0 bg-success"><img src="{% static '/images/dashboard-1/icon/checked.png'%}" alt=""/></div>
+                <div class="flex-grow-1"><a href="product-page.html">
+                    <h6>Route P204_salesfores created</h6></a>
+                  <p>Andre Sluczka</p>
+                </div><span>2 hours</span>
+              </li>
+              
+        </div>
+      </div> -->
+      
+    </div>
+    <div class="col-xxl-12 col-xl-14 proorder-xxl-14 col-lg-14 col-md-12 box-col-12">
+      <div class="card">
+        <div class="card-header card-no-border pb-0">
+          <h3>Today Clubhousebooking</h3>
+        </div>
+        <div class="card-body transaction-history pt-0">
+          <div class="table-responsive theme-scrollbar">
+            <table class="table display table-bordernone" id="transaction" style="width:100%">
+              {% if todayclub %}
+              <thead>
+                <tr> 
+                  <th>clubhouse_booking_id</th>
+                  <th>member_name</th>
+                  <th>start_date</th>
+                  <th>end_date</th>
+                  <th>request_date</th>
+                  <th>description</th>
+                  <th class="text-center">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for data in todayclub %}
+                  <tr>
+                    <td>{{data.clubhouse_booking_id}}</td>
+                        <td>{{data.member_id.name}}</td>  
+                        <td>{{data.start_date}}</td>
+                        <td>{{data.end_date}}</td>
+                        <td>{{data.request_date}}</td>
+                        <td>{{data.description}}</td>
+                        <td class="text-success">{{data.amount}}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+              {% else %}
+              <tbody>
+              <h4 class="text-danger"> NO BOOKING</h4>
+              </tbody>
+              {% endif %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xxl-12 col-xl-14 proorder-xxl-14 col-lg-14 col-md-12 box-col-12">
+      <div class="card">
+        <div class="card-header card-no-border pb-0">
+          <h3>Today MAINTENANCE</h3>
+        </div>
+        <div class="card-body transaction-history pt-0">
+          <div class="table-responsive theme-scrollbar">
+            <table class="table display table-bordernone" id="transaction" style="width:100%">
+              {% if todaymain %}
+              <thead>
+                  <tr>
+                    <th>Member ID</th>
+                    <th>Name</th>
+                    <th>House No</th>
+                    <th>Block No</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                </tr>
+                
+              </thead>
+              <tbody>
+                  {% for data in todayclub %}
+                  <tr>
+                    <td>{{ member.member_id }}</td>
+                    <td>{{ member.name }}</td>
+                    <td>{{ member.house_no }}</td>
+                    <td>{{ member.block_no }}</td>
+                    <td>{{ member.contact }}</td>
+                    <td>{{ member.email }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+              {% else %}
+              <tbody>
+              <h4 class="text-danger"> NO BOOKING</h4>
+              </tbody>
+              {% endif %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-xxl-12 col-xl-14 proorder-xxl-14 col-lg-14 col-md-12 box-col-12">
+      <div class="card">
+        <div class="card-header card-no-border pb-0">
+          <h3>Today visitors</h3>
+        </div>
+        <div class="card-body transaction-history pt-0">
+          <div class="table-responsive theme-scrollbar">
+            <table class="table display table-bordernone" id="transaction" style="width:100%">
+              {% if todaymain %}
+              <thead>
+                  <tr>
+                    <th>visitor_id</th>
+                    <th>visitor name</th>
+                    <th>contact_no</th>
+                    <th>date_time</th>
+                    <th>registered_by</th>
+                </tr>
+                
+              </thead>
+              <tbody>
+                  {% for data in todayclub %}
+                  <tr>
+                    <td>{{data.visitor_id}}</td>
+                    <td>{{data.name}}</td>  
+                    <td>{{data.contact_no}}</td>
+                    <td>{{data.date_time}}</td>
+                    <td>{{data.registered_by.name}}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+              {% else %}
+              <tbody>
+              <h4 class="text-danger"> NO BOOKING</h4>
+              </tbody>
+              {% endif %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

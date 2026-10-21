@@ -1,0 +1,58 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% block content %}
+
+<!--===== Faq =====-->
+<section id="faq2" class="padding bg_light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="details-heading">
+              <div class="row">
+                <div class="col-md-12 bottom40">
+                  <h2 class="text-uppercase"> <span class="color_red">Notices</span></h2>
+                </div>
+              </div>
+              {% for data in e %}
+              <diiv class="panel-group m_t40" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        {{data.title}}
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <div class="listing-special-detail">
+                            <h5>DESCRIPTION </h5>
+                            <h5><br/></h5>
+                            
+                            <p> - {{data.description}}</p>
+
+                          </div>
+                          <h6 class="col-md-6 text-right"> - {{data.notice_date}}</h6>
+                        </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              </div>
+            </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</section>
+<!--===== #/Faq =====-->
+
+
+
+
+<!--===== FOOTER =====-->
+{% endblock %}

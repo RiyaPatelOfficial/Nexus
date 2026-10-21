@@ -1,0 +1,138 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% block content %}
+
+  <!--===== #/HEADER BOTTOM =====--> 
+
+  <!--===== NAV-BAR =====-->
+
+<!--===== #/HEADER =====-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#end_date").blur(function(){
+        var start_date = $("#start_date").val();
+        var end_date = $("#end_date").val();
+        // alert(start_date);
+        if (start_date && end_date) {
+            $.ajax({
+                url: "/client/dd/",  // Django URL
+                type: "POST",
+                data: {
+                    'start_date': start_date,
+                    'end_date': end_date,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function(response){
+                    $("#amount").val(response.amount);
+ +                   alert(response.amount);
+                },
+                error: function(){
+                    $("#date-difference").html("Error calculating date difference.");
+                }
+            });
+        }
+    });
+});
+</script>
+
+<!-- PAGE TITLE -->
+<div class="page-title page-main-section parallaxie">
+  <div class="container padding-bottom-top-120 text-uppercase text-center">
+    <div class="main-title">
+      <h1>CLUBHOUSE BOOKING</h1>
+      <h4 style="color: RED;"> Note: For clubhouse 500₹/Day </h4>
+      <div class="line_4"></div>
+      <div class="line_5"></div>
+      <div class="line_6"></div>
+      <a href="/client/chstatus/" class="header-login">status</a></li>
+
+     
+  </div>
+</div>
+<!--PAGE TITLE --> 
+
+
+<!-- Create Agency -->
+<section id="profile" class="padding bg_light">
+    <div class="container-3"> 
+        <div class="row">
+    <form method="post" action="/client/clubhousebooking/">
+        {% csrf_token %}
+        <!-- <div class="container"> -->
+            <div class="row">
+
+                <!-- <div class="col-md-4 col-sm-3 col-xs-15"> -->
+                </div>
+                <!-- <div class="col-md-2 col-sm-9 col-xs-15"> -->
+                <div class="profile-login-bg">
+                    <div class="row bottom40">
+                        <div class="col-md-12"> <h2><span><i class="fa fa-user"></i></span> General <span>Info</span></h2></div>
+                        
+                        <div class="col-md-9 col-sm-9">
+                            <div class="form-group">
+                                <label for="start_date">start date</label>
+                                <input class="form-control" id="start_date" name="start_date"  type="date">
+                                <input class="" id="name"  hidden name="member_id"  value="{{uname}}" type="text">
+                                <input class="" id="email" hidden name="request_date" value="{{current_date}}" type="datetime-local">
+                                <input class=""  hidden name="booking_status" value="0" >
+                                <input class=""  hidden name="payment_status" value="0" >
+                                <!-- <input  id="mobile" hidden  name="amount" value="0" type="text"> -->
+                            </div>
+                            <!--/.form-group-->
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label for="email">end date</label>
+                                <input class="form-control" id="end_date" name="end_date"  type="date">
+                            </div>
+                            <!--/.form-group-->
+                        </div>
+                        {% for i in messages %}
+                            <h3 style="color: red;">{{i}}</h3>
+                        {% endfor %}
+                        <!--/.col-md-3-->
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label for="mobile">Mobile</label>
+                                <input class="form-control" id="mobile" placeholder="+91 9xxxx 9xxxx" required  name="mobile" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile">amount</label>
+                                <input class="form-control" readonly  name="amount" id="amount" placeholder="AMOUNT WILL SHOW HERE"  type="number">
+                                
+                            </div>
+                            <!--/.form-group-->
+                        </div>
+                        <!-- <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label for="mobile">Amount </label>
+                            </div> -->
+                            <!--/.form-group-->
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h2> description </h2>
+                            <div class="form-group">
+                                <label for="about-me">Reason for booking clubhouse</label>
+                                <div class="form-group">
+                                    <textarea class="form-control" id="about-me" rows="3" aria-valuenow="0" name="description" required=""></textarea>
+                                </div>
+                                <!--/.form-group-->
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn_fill" id="submit"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+</section>
+<!-- Create Agency--> 
+
+<!--===== FOOTER =====-->
+{% endblock %}

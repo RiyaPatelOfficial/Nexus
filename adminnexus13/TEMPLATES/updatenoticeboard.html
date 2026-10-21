@@ -1,0 +1,68 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"></script>
+
+<style>
+.parsley-errors-list {
+    color: red;
+}
+</style>
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-title">
+      <div class="row">
+        <div class="col-sm-6 col-12">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header card-no-border pb-0">
+            <h3>
+            update notice
+          </h3>
+          </div>
+          <div class="card-body">
+            <!-- form start -->
+            <form class="row g-3 needs-validation custom-input tooltip-valid validation-forms" method="post"  data-parsley-validate>
+              {% csrf_token %}
+               <div class="col-xl-6">
+                <div class="card">
+                  <div class="card-body">
+                    <form class="row g-3 needs-validation custom-input validation-forms" novalidate="">
+                      <div class="col-12">
+                        <label class="form-label" for="validationCustom01">description</label>
+                        <input class="form-control " id="validationCustom01" name="description"  value="{{notice.description}}" type="text" placeholder="Mark"  data-parsley-maxlength="250" required data-parsley-required-message="Name is required">
+                        <div class="invalid-feedback">Please enter your valid</div>
+                        <div class="valid-feedback">
+                           Looks's Good! </div>
+                          </div>
+                          <div class="col-12">
+                            <label class="col-sm-12 col-form-label" for="inputPassword1">date_time</label>
+                            <!-- <input class="form-control" id="inputPassword1"name="date_time" type="datetime" required=""> -->
+                            <input class="form-control" name="notice_date" type="datetime-local" required data-parsley-required-message="Name is required">
+                            <div class="invalid-feedback">Please enter your valid password</div>
+                          </div>
+                          <div class="col-12 mt-2"> 
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

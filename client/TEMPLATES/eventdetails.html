@@ -1,0 +1,85 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% block content %}
+<!--===== #/HEADER =====-->
+
+
+<!-- PAGE TITLE -->
+<div class="page-title page-main-section parallaxie">
+  <div class="container padding-bottom-top-120 text-uppercase text-center">
+    <div class="main-title">
+      <h1>Property</h1>
+      <h5>10 Years Of Experience!</h5>
+      <div class="line_4"></div>
+      <div class="line_5"></div>
+      <div class="line_6"></div>
+      <a href="index.html">home</a>
+      <span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+      <a href="property-details-1.html">Property details Style - 1</a> 
+    </div>
+  </div>
+</div>
+<!--PAGE TITLE -->
+
+
+<!-- PROPERTY DETAILS -->
+<section class="property-details padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-15">
+        <h2 class="text-uppercase">{{c.event_id}}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="property-d-1" class="owl-carousel">
+              {% for data in c %}
+              <div class="item"><img src="/static/client_assets/img/{{data.img_path}}" alt="this is img" /></div>
+              {% endfor %}
+              
+            </div>
+            <!-- <div id="property-d-1-2" class="owl-carousel">
+              <div class="item"><img src="{% static 'client_assets/images/property-d-s-1-1.jpg'%}" alt="image" /></div>
+              <div class="item"><img src="{% static 'client_assets/images/property-d-s-1-2.jpg'%}" alt="image" /></div>
+              <div class="item"><img src="{% static 'client_assets/images/property-d-s-1-3.jpg'%}" alt="image" /></div>
+              <div class="item"><img src="{% static 'client_assets/images/property-d-s-1-4.jpg'%}" alt="image" /></div>
+              <div class="item"><img src="{% static 'client_assets/images/property-d-s-1-5.jpg'%}" alt="image" /></div>
+              <div class="item"><img src="{% static 'client_assets/images/property-d-s-1-1.jpg'%}" alt="image" /></div>
+              <div class="item"><img src="{% static 'client_assets/images/property-d-s-1-2.jpg'%}" alt="image" /></div>
+            </div> -->
+          </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="property-tab">
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
+              </ul>
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="description">
+                  <h3 class="text-uppercase  bottom20 top10"><span class="color_red">Description</span></h3>
+                  {% for data in ev_desc %}
+                  <p class="p-font-15">{{data.description}}</p>
+                  {% endfor %}
+                  <br/>
+                  <br/>
+                  <div class="property_meta bottom40">
+                  </div>
+                  <a class="link_arrow" href="/client/eventlist/"> Back to Eventlist </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- PROPERTY DETAILS -->
+<!--===== FOOTER =====-->
+{% endblock %}

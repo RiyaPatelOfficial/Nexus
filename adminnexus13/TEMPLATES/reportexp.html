@@ -1,0 +1,91 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!-- with filter  -->
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-sm-6 col-12">
+                    <h2>Maintenance Payments</h2>
+                </div>
+                <div class="col-sm-6 col-12">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header pb-0 card-no-border">
+                <h3>Maintenance Payment Status</h3>
+            </div>
+            <div class="card-body">
+                <!-- Month Selector Form -->
+                <!-- Month Selector Form -->
+                        <form method="get" action="/reportexp/">
+                            <label for="month">Select Month:</label>
+                            <input type="month" id="month" name="month" value="{{ selected_month|default:'' }}">
+                            <button class="btn btn-primary buttons-pdf buttons-html5" type="submit">Filter</button>
+                        </form>
+
+                        <!-- If a month is selected, show the filtered data -->
+                        {% if selected_month %}
+                            <br/>
+                            <h4>Expenses for {{ selected_month }}</h4>
+                            <p>Total Expense for {{ selected_month }}: ₹{{ total_expense }}</p>
+                            <br/>
+                            <a href="/expence/" class="btn btn-primary buttons-pdf buttons-html5">All Expenses</a>
+                            <br/><br/>
+                            <div class="dt-ext table-responsive">
+                                <table class="display" id="export-button">
+                                    <thead>
+                                        <tr>
+                                            <th>Expense ID</th>
+                                            <th>Description</th>
+                                            <th>Amount</th>
+                                            <th>Date & Time</th>
+                                            <th>Expense Type</th>
+                                            <th>Paid To</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for expense in expenses %}
+                                            <tr>
+                                                <td>{{ expense.expence_id }}</td>
+                                                <td>{{ expense.description }}</td>
+                                                <td>{{ expense.amount }}</td>
+                                                <td>{{ expense.date_time }}</td>
+                                                <td>{{ expense.expence_type }}</td>
+                                                <td>{{ expense.paid_to }}</td>
+                                                <td> 
+                                                    <ul class="action"> 
+                                                        <li class="edit">
+                                                            <a href="/updateexpence/{{ expense.expence_id }}">
+                                                                <img src="{% static '/images/border_color_24dp_999999_FILL0_wght400_GRAD0_opsz24.svg' %}" height="20px" width="30px" />
+                                                            </a>
+                                                        </li>
+                                                        <li class="delete">
+                                                            <a href="/delexp/{{ expense.expence_id }}">
+                                                                <img src="{% static '/images/delete_24dp_EA3323_FILL1_wght400_GRAD0_opsz24.svg' %}" height="20px" width="30px" />
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <br/>
+                            <h4>Please select a month to view expenses.</h4>
+                        {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends -->
+</div>
+{% endblock %}

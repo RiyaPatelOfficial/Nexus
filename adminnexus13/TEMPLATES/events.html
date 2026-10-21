@@ -1,0 +1,61 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+        <div class="page-body">
+          <div class="container-fluid">
+            <div class="page-title">
+              <div class="row">
+                
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header pb-0 card-no-border">
+                <h3>Events</h3>
+                <br/>
+                <a href="/insertevent/" class="btn btn-primary buttons-pdf buttons-html5" >creat event</a>
+              </div>
+              <div class="card-body">
+                <div class="dt-ext table-responsive">
+                  <table class="display" id="export-button">
+                    <thead>
+                      <tr>
+                        <th>event_id</th>
+                        <th>event_name</th>
+                        <th>description</th>
+                        <th>img name</th>
+                        <th>start_date</th>
+                        <th>end_date</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for data in e %}
+                       <tr>
+                        <td>{{data.event_id}}</td>
+                        <td>{{data.event_name}}</td>  
+                        <td>{{data.description}}</td>
+                        <td>{{data.epost}}</td>
+                        <td>{{data.start_date}}</td>
+                        <td>{{data.end_date}}</td>
+                        <td> 
+                          <ul class="action"> 
+                            <li class="edit"> <a href="/updateevent/{{data.event_id}}"><img src="{% static '/images/border_color_24dp_999999_FILL0_wght400_GRAD0_opsz24.svg' %}" height="20px" width="30px" /><!-- <i class="icon-pencil-alt"></i> --></a></li>
+                            <li class="delete"><a href="/delevent/{{data.event_id}}"><img src="{% static '/images/delete_24dp_EA3323_FILL1_wght400_GRAD0_opsz24.svg' %}" height="20px" width="30px" /></a></li>
+                          </ul>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                    
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends                 -->
+        </div>
+{% endblock %}

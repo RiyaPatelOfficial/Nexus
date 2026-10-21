@@ -1,0 +1,83 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-title">
+      <div class="row">
+        <div class="col-sm-6 col-12">
+          <h2>Form Validation</h2>
+        </div>
+        <div class="col-sm-6 col-12">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html"><i class="iconly-Home icli svg-color"></i></a></li>
+            <li class="breadcrumb-item">Form Controls</li>
+            <li class="breadcrumb-item active">Form Validation</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header card-no-border pb-0">
+            <h3>Tooltip form validation</h3>
+            <p class="mt-1 mb-0">
+               If your form layout allows it, you can swap the <code>.{valid|invalid}</code>-feedback classes for</p>
+          </div>
+          <div class="card-body">
+            <!-- form start -->
+            <form class="row g-3 needs-validation custom-input tooltip-valid validation-forms" method="post" novalidate="">
+              {% csrf_token %}
+              
+               <div class="col-xl-6">
+                <div class="card">
+                  <div class="card-header card-no-border pb-0">
+                    <h3>Validation form</h3>
+                    <p class="mt-1 mb-0">
+                       Custom feedback styles apply custom colors, borders and background icons to better communicate feedback.</p>
+                  </div>
+                  <div class="card-body">
+                    <form class="row g-3 needs-validation custom-input validation-forms" novalidate="">
+                      <div class="col-12">
+                        <label class="form-label" for="validationCustom01">description</label>
+                        <input class="form-control " id="validationCustom01" name="description" type="text" placeholder="Mark" required="">
+                        <div class="invalid-feedback">Please enter your valid</div>
+                        <div class="valid-feedback">
+                           Looks's Good! </div>
+                          </div>
+                          <div class="col-12">
+                            <label class="col-sm-12 col-form-label" for="inputPassword1">amount</label>
+                            <input class="form-control" id="inputPassword1" name="amount" type="number" required="">
+                            <div class="invalid-feedback">Please enter your valid email</div>
+                          </div>
+                          <div class="col-12">
+                            <label class="col-sm-12 col-form-label" for="inputPassword1">date_time</label>
+                            <!-- <input class="form-control" id="inputPassword1"name="date_time" type="datetime" required=""> -->
+                            <input class="form-control" name="date_time" type="datetime-local" >
+                            <div class="invalid-feedback">Please enter your valid password</div>
+                          </div>
+                          <div class="col-12">
+                            <label class="col-sm-12 col-form-label" for="inputPassword1">expence_type</label>
+                            <input class="form-control" id="inputPassword1" name="expence_type" type="text" required="">
+                            <div class="invalid-feedback">Please enter your valid email</div>
+                          </div>
+                          <div class="col-12">
+                            <label class="col-sm-12 col-form-label" for="inputPassword1">paid_to</label>
+                            <input class="form-control" id="inputPassword1" name="paid_to" type="text" required="">
+                            <div class="invalid-feedback">Please enter your valid email</div>
+                          </div>
+                      <br/>
+                                    <button class="btn btn-primary" type="submit">Submit form</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

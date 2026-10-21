@@ -1,0 +1,404 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from admin.pixelstrap.net/admiro/template/datatable-ext-autofill.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 28 Sep 2024 05:18:15 GMT -->
+<head>
+  <style>
+    /* img{
+      width: 25PX;
+      left: ;
+    } */
+  </style>
+    <meta http-equiv="Content-Type" content="text/html; char
+    set=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admiro admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Admiro admin template, best javascript admin, dashboard template, bootstrap admin template, responsive admin template, web app">
+    <meta name="author" content="pixelstrap">
+    <title>Nexus-the housing service</title>
+    <!-- Favicon icon-->
+    <link rel="icon" href="{% static 'images/NEXUS-favicon.png'%}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/NEXUS-favicon.png'%}" type="image/x-icon">
+    <!-- Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900;6..12,1000&amp;display=swap" rel="stylesheet">
+    <!-- Flag icon css -->
+    <link rel="stylesheet" href="{% static 'css/vendors/flag-icon.css'%}">
+    <!-- iconly-icon-->
+    <link rel="stylesheet" href="{% static 'css/iconly-icon.css '%}">
+    <link rel="stylesheet" href="{% static 'css/bulk-style.css'%}">
+    <!-- iconly-icon-->
+    <link rel="stylesheet" href="{% static 'css/themify.css '%}">
+    <!--fontawesome-->
+    <link rel="stylesheet" href="{% static 'css/fontawesome-min.css '%}">
+    <!-- Whether Icon css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/weather-icons/weather-icons.min.css '%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/scrollbar.css '%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/datatables.css '%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/datatable-extension.css '%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/slick.css '%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors/slick-theme.css '%}">
+    <!-- App css -->
+    <link rel="stylesheet" href="{% static 'css/style.css '%}">
+    <link id="color" rel="stylesheet" href="{% static 'css/color-1.css '%}" media="screen">
+  </head>
+  <body>
+    <!-- tap on top starts-->
+    <div class="tap-top"><i class="iconly-Arrow-Up icli"></i></div>
+    <!-- tap on tap ends-->
+    <!-- loader-->
+    <!-- <div class="loader-wrapper">
+      <div class="loader"><span></span><span></span><span></span><span></span><span></span></div>
+    </div> -->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+      <header class="page-header row">
+        <div class="logo-wrapper d-flex align-items-center col-auto"><a href="index.html"><img class="light-logo img-fluid" src="{% static 'images/logo/NEXUS-logo1.png'%}" alt="logo"><img class="dark-logo img-fluid" src="{% static 'images/logo/NEXUS-logo-dark.png'%}" alt="logo"></a><a class="close-btn toggle-sidebar" href="javascript:void(0)">
+          <img class="svg-color" src="{% static '/images/menu-svgrepo-com.svg' %}" height="30px" width="40px" />
+          
+          </a></div>
+        <div class="page-main-header col">
+          <div class="header-left">
+            <form class="form-inline search-full col" action="#" method="get">
+              <div class="form-group w-100">
+                <div class="Typeahead Typeahead--twitterUsers">
+                  <div class="u-posRelative">
+                    <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text" placeholder="Search Admiro .." name="q" title="" autofocus>
+                    <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Loading...</span></div><i class="close-search" data-feather="x"></i>
+                  </div>
+                  <div class="Typeahead-menu"></div>
+                </div>
+              </div>
+            </form>
+            <div class="form-group-header d-lg-block d-none">
+              <div class="Typeahead Typeahead--twitterUsers">
+                <div class="u-posRelative d-flex align-items-center"> 
+                  <input class="demo-input py-0 Typeahead-input form-control-plaintext w-100" type="text" placeholder="Type to Search..." name="q" title=""><i class="search-bg iconly-Search icli"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-right">
+            <ul class="header-right"> 
+              <li class="custom-dropdown">
+                <div class="translate_wrapper">
+                  <div class="current_lang"><a class="lang" href="javascript:void(0)"><img src="{% static '/images/flag-in-svgrepo-com.svg' %} " height="20px" width="30px"/>
+                      <h6 class="lang-txt f-w-700">INDIA</h6></a></div>
+                  <ul class="custom-menu profile-menu language-menu py-0 more_lang">
+                                  <li class="d-block"><a class="lang" href="#" data-value="English"><img src="{% static '/images/flag-in-svgrepo-com.svg' %} " height="20px" width="30px"/></i>
+                                      <div class="lang-txt">Hindi</div></a></li>
+                                  <li class="d-block"><a class="lang" href="#" data-value="fr"><i class="flag-icon flag-icon-fr"></i>
+                                      <div class="lang-txt">Français</div></a></li>
+                                  <li class="d-block"><a class="lang" href="#" data-value="es"><i class="flag-icon flag-icon-es"></i>
+                                      <div class="lang-txt">Español</div></a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="search d-lg-none d-flex"> <a href="javascript:void(0)">
+                <img class="svg-color" src="{% static '/images/moon-svgrepo-com(1).svg' %}" height="20px" width="30px" />
+              
+              </a></li>
+              <li>  <a class="dark-mode" href="javascript:void(0)">
+                <img src="{% static '/images/moon-svgrepo-com.svg' %}" height="20px" width="30px" />
+              
+              </a></li>
+              
+              <!-- <li class="custom-dropdown"><a href="javascript:void(0)">
+                <img src="{% static '/images/bell-svgrepo-com.svg' %}" height="20px" width="30px"/>
+                </a> <span class="badge rounded-pill badge-primary">4</span> 
+                <div class="custom-menu notification-dropdown py-0 overflow-hidden">
+                  <h3 class="title bg-primary-light dropdown-title">Notification <span class="font-primary">View all</span></h3>
+                  <ul class="activity-timeline">
+                    <li class="d-flex align-items-start">
+                      <div class="activity-line"></div>
+                      <div class="activity-dot-primary"></div>
+                      <div class="flex-grow-1">
+                        <h6 class="f-w-600 font-primary">30-04-2024<span>Today</span><span class="circle-dot-primary float-end">
+                          <img src="{% static '/images/scan-o-svgrepo-com.svg' %}" height="20px" width="30px" />
+                          
+                          </span></h6>
+                        <h5>Alice Goodwin</h5>
+                        <p class="mb-0">Fashion should be fun. It shouldn't be labelled intellectual.</p>
+                      </div>
+                    </li>
+                                  <li class="d-flex align-items-start">
+                                    <div class="activity-dot-secondary"></div>
+                                    <div class="flex-grow-1">
+                                      <h6 class="f-w-600 font-secondary">28-06-2024<span>1 hour ago</span><span class="float-end circle-dot-secondary">
+                                          <svg class="circle-color">
+                                            <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#circle"></use>
+                                          </svg></span></h6>
+                                      <h5>Herry Venter</h5>
+                                      <p>I am convinced that there can be luxury in simplicity.</p>
+                                    </div>
+                                  </li>
+                                  <li class="d-flex align-items-start">
+                                    <div class="activity-dot-primary"></div>
+                                    <div class="flex-grow-1">
+                                      <h6 class="f-w-600 font-primary">04-08-2024<span>Today</span><span class="float-end circle-dot-primary">
+                                          <svg class="circle-color">
+                                            <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#circle"></use>
+                                          </svg></span></h6>
+                                      <h5>Loain Deo</h5>
+                                      <p>I feel that things happen for open new opportunities.</p>
+                                    </div>
+                                  </li>
+                                  <li class="d-flex align-items-start">
+                                    <div class="activity-dot-secondary"></div>
+                                    <div class="flex-grow-1">
+                                      <h6 class="f-w-600 font-secondary">12-11-2024<span>Yesterday</span><span class="float-end circle-dot-secondary">
+                                          <svg class="circle-color">
+                                            <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#circle"></use>
+                                          </svg></span></h6>
+                                      <h5>Fenter Jessy</h5>
+                                      <p>Sometimes the simplest things are the most profound.</p>
+                                    </div>
+                                  </li>
+                  </ul>
+                </div>
+              </li> -->
+              <li><a class="full-screen" href="javascript:void(0)"> 
+                <img src="{% static '/images/scan-o-svgrepo-com.svg' %}" height="20px" width="30px" />
+                <!-- <svg>
+                  <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#scanfull"></use>
+                </svg> -->
+              </a></li>
+              <li class="profile-nav custom-dropdown">
+                <div class="user-wrap">
+                  <div class="user-img"><img src="{% static '/images/profile.png' %}" alt="user jatin"></div>
+                  <div class="user-content">
+                    <h6>{{request.session.adminname}}</h6>
+                    <p class="mb-0">Admin<i class="fa-solid fa-chevron-down"></i></p>
+                  </div>
+                </div>
+                <div class="custom-menu overflow-hidden">
+                  <ul class="profile-body">
+                    <li class="d-flex"> 
+                      <svg class="svg-color">
+                        <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Profile"></use>
+                      </svg><a class="ms-2" href="/profile/">Profile Account</a>
+                    </li>
+                    <li class="d-flex"> 
+                      <svg class="svg-color">
+                        <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Login"></use>
+                      </svg><a class="ms-2" href="/logout/">Log Out</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="page-body-wrapper"> 
+        <!-- Page sidebar start-->
+        <aside class="page-sidebar"> 
+          <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
+          <div class="main-sidebar" id="main-sidebar">
+            <ul class="sidebar-menu" id="simple-bar">
+              <li class="pin-title sidebar-main-title">  
+                <div> 
+                  <h5 class="sidebar-title f-w-700">Pinned</h5>
+                </div>
+              </li>
+              <li class="sidebar-main-title">
+                <div>
+                  <h5 class="lan-1 f-w-700 sidebar-title">General</h5>
+                </div>
+              </li>
+              <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/"> 
+                <img  class="stroke-icon"src="{% static '/images/home-home-svgrepo-com.svg' %}" height="20px" width="30px" />  
+                <!-- <svg class="stroke-icon">
+                  <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Home-dashboard"></use>
+                </svg> -->
+                <h6>Dashboards</h6><span class="badge"></span><i class="iconly-Arrow-Right-2 icli"></i></a>
+                
+              </li>
+              <li class="sidebar-main-title">
+                <div>
+                  <h5 class="f-w-700 sidebar-title pt-3">DATA TABLE</h5>
+                </div>
+              </li>
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/table/">
+                <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                  <!-- <svg class="stroke-icon">
+                    <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                  </svg> -->
+                  <h6 class="f-w-600">housing member</h6><i class="iconly-Arrow-Right-2 icli"></i></a></li>
+
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/family/">
+                <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                  <!-- <svg class="stroke-icon">
+                    <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                  </svg> -->
+                  <h6 class="f-w-600">member</h6></a></li>
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/notifications/">
+                <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                  <!-- <svg class="stroke-icon">
+                    <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                  </svg> -->
+                  <h6 class="f-w-600">notifications </h6></a></li>
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/noticeboards/">
+                <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                  <!-- <svg class="stroke-icon">
+                    <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                  </svg> -->
+                  <h6 class="f-w-600">noticeboards</h6></a></li>
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/clubhouse_bookings/">
+                <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                  <!-- <svg class="stroke-icon">
+                    <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                  </svg> -->
+                  <h6 class="f-w-600">clubhouse_bookings</h6></a></li>
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/maintenance_payment/">
+                <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                  <!-- <svg class="stroke-icon">
+                    <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                  </svg> -->
+                  <h6 class="f-w-600">maintenance_payment </h6></a></li>
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/security_person/">
+                <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                  <!-- <svg class="stroke-icon">
+                    <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                  </svg> -->
+                  <h6 class="f-w-600">security_person</h6></a></li>
+              <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/visitors/">
+                <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                  <!-- <svg class="stroke-icon">
+                    <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                  </svg> -->
+                  <h6 class="f-w-600">visitors</h6></a></li>
+                <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/event/">
+                  <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                    <!-- <svg class="stroke-icon">
+                      <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                    </svg> -->
+                    <h6 class="f-w-600">event</h6></a></li>
+                <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/event_gallery/">
+                  <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                    <!-- <svg class="stroke-icon">
+                      <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                    </svg> -->
+                    <h6 class="f-w-600">event_gallery</h6></a></li>
+                
+                <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/suggession/">
+                  <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                    <!-- <svg class="stroke-icon">
+                      <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                    </svg> -->
+                    <h6 class="f-w-600">suggession</h6></a></li>
+                <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/expence/">
+                  <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                    <!-- <svg class="stroke-icon">
+                      <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                    </svg> -->
+                    <h6 class="f-w-600">expence</h6></a></li>
+                    
+                   
+                    <div>
+                      <h5 class="f-w-700 sidebar-title pt-3">report</h5>
+                    </div>
+                    <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/reportexp/">
+                      <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                        <!-- <svg class="stroke-icon">
+                          <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                        </svg> -->
+                        <h6 class="f-w-600">report 1</h6></a></li>
+                    <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/filtermembers/">
+                      <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                        <!-- <svg class="stroke-icon">
+                          <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                        </svg> -->
+                        <h6 class="f-w-600">report 2</h6></a></li>
+                    <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/chbookcheck/">
+                      <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                        <!-- <svg class="stroke-icon">
+                          <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                        </svg> -->
+                        <h6 class="f-w-600">report 3 </h6></a></li>
+                    <li class="sidebar-list"> <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link" href="/maintenance-payment/">
+                      <!-- <img src="{% static '/images/.svg' %}" height="20px" width="30px" /> -->
+                        <!-- <svg class="stroke-icon">
+                          <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#Wallet"></use>
+                        </svg> -->
+                        <h6 class="f-w-600">maintenance report </h6></a></li>
+                    <ul class="sidebar-submenu">
+                      <li> <a href="project-list.html">Project list </a></li>
+                      <li> <a href="projectcreate.html">Project create </a></li>
+                    </ul>
+                  </li>
+              
+            </ul>
+          </div>
+          <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
+        </aside>
+        <!-- Page sidebar end-->
+        
+        {% block content %}
+        
+        {% endblock %}
+        <footer class="footer"> 
+          <div class="container-fluid">
+            <div class="row"> 
+              <div class="col-md-6 footer-copyright">
+                <p class="mb-0">made by Nexus13 Team .</p>
+              </div>
+              <div class="col-md-6">
+          <p class="float-end mb-0">Made fors Society service
+            <svg class="svg-color footer-icon">
+              <use href="https://admin.pixelstrap.net/admiro/assets/svg/iconly-sprite.svg#heart"></use>
+            </svg>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</div>
+<!-- jquery-->
+<script src="{% static 'js/vendors/jquery/jquery.min.js '%}"></script>
+<!-- bootstrap js-->
+<script src="{% static 'js/vendors/bootstrap/dist/js/bootstrap.bundle.min.js '%}" defer=""></script>
+<script src="{% static 'js/vendors/bootstrap/dist/js/popper.min.js '%}" defer=""></script>
+<!--fontawesome-->
+<script src="{% static 'js/vendors/font-awesome/fontawesome-min.js '%}"></script>
+<!-- sidebar -->
+<script src="{% static 'js/sidebar.js '%}"></script>
+<!-- scrollbar-->
+<script src="{% static 'js/scrollbar/simplebar.js '%}"></script>
+<script src="{% static 'js/scrollbar/custom.js '%}"></script>
+<!-- slick-->
+<script src="{% static 'js/slick/slick.min.js '%}"></script>
+<script src="{% static 'js/slick/slick.js '%}"></script>
+<!-- datatable-->
+<script src="{% static 'js/datatable/datatables/jquery.dataTables.min.js '%}"></script>
+<!-- datatable_extension-->
+<script src="{% static 'js/datatable/datatable-extension/dataTables.buttons.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/jszip.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/buttons.colVis.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/pdfmake.min.js '%}"></script>
+<script src="{% static '/js/datatable/datatable-extension/vfs_fonts.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/dataTables.autoFill.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/dataTables.select.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/buttons.bootstrap4.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/buttons.html5.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/buttons.print.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/dataTables.bootstrap4.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/dataTables.responsive.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/responsive.bootstrap4.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/dataTables.keyTable.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/dataTables.colReorder.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/dataTables.fixedHeader.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/dataTables.rowReorder.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/dataTables.scroller.min.js '%}"></script>
+<script src="{% static 'js/datatable/datatable-extension/custom.js '%} "></script>
+<!-- theme_customizer-->
+<script src="{% static 'js/theme-customizer/customizer.js '%}"></script>
+<!-- custom script -->
+<script src="{% static 'js/script.js '%}"></script>
+</body>
+
+<!-- Mirrored from admin.pixelstrap.net/admiro/template/datatable-ext-autofill.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 28 Sep 2024 05:18:20 GMT -->
+</html>

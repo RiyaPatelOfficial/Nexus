@@ -1,0 +1,85 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-title">
+      <div class="row">
+        
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header card-no-border pb-0">
+            <h3>Create Event</h3>
+           
+          </div>
+          <div class="card-body">
+            <!-- form start -->
+            <form class="row g-3 needs-validation custom-input tooltip-valid validation-forms" method="post" novalidate="">
+              {% csrf_token %}
+               <!-- expence -->
+               <div class="col-xl-6">
+                <div class="card">
+                                <div class="card-body">
+                    <form class="row g-3 needs-validation custom-input validation-forms" novalidate="">
+                      <div class="col-12">
+                        <label class="form-label" for="validationCustom01">event_name</label>
+                        <input class="form-control " id="validationCustom01" name="event_name" type="text" placeholder="Mark" required="">
+                        <div class="invalid-feedback">Please enter your valid</div>
+                        <div class="valid-feedback">
+                           Looks's Good! </div>
+                          </div>
+                      <div class="col-12">
+                        <label class="form-label" for="validationCustom01">description</label>
+                        <input class="form-control " id="validationCustom01" name="description" type="text" placeholder="Mark" required="">
+                        <div class="invalid-feedback">Please enter your valid</div>
+                        <div class="valid-feedback">
+                           Looks's Good! </div>
+                          </div>
+                          
+                          <div class="col-12">
+                            <label class="col-sm-12 col-form-label" for="inputPassword1">start_date</label>
+                            <!-- <input class="form-control" id="inputPassword1"name="date_time" type="datetime" required=""> -->
+                            <input class="form-control" name="start_date" type="datetime-local" >
+                            <div class="invalid-feedback">Please enter your valid password</div>
+                          </div>
+                          <div class="col-12">
+                            <label class="col-sm-12 col-form-label" for="inputPassword1">end_date</label>
+                            <!-- <input class="form-control" id="inputPassword1"name="date_time" type="datetime" required=""> -->
+                            <input class="form-control" name="end_date" type="datetime-local" >
+                            <div class="invalid-feedback">Please enter your valid password</div>
+                          </div>
+
+                          <img src="" height="200" width="200" name="output" id="output" style="margin-left: 2px;border-radius: 5px 5px 5px 5px;"/><br><br>
+                          <div class="col-12">
+                            <label class="form-label" for="validationCustom01">img_path</label>
+                            <input class="form-control " id="validationCustom01" name="epost" type="file" placeholder="Please enter your suggestion" required=""accept="image/*" onchange="loadFile(event)">
+                          </div>
+                          <script>
+                              function loadFile(event){
+                                  document.getElementById('output').src=
+                                  URL.createObjectURL(event.target.files[0]);
+                              }
+                          </script> 
+                            <div class="invalid-feedback">Please enter your valid</div>
+                            <div class="valid-feedback">
+                               Looks's Good! </div>
+                              </div>
+                      <br/>
+              <div class="col-12 mt-2">
+                <button class="btn btn-primary" type="submit">Submit form</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

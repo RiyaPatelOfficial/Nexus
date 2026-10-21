@@ -1,0 +1,66 @@
+{% extends 'headers.html' %}
+{% load static %}
+{% block content %} 
+
+<section id="agent-2-peperty" class="profile padding ">
+    <div class="container-3"> 
+        <div id="project-filter" class="cbp-l-filters-alignCenter">
+            <a href="/client/clientviewvisitor/"><div style="color: red;"  class="cbp-filter-item-active cbp-filter-item">Show All</div></a>
+            <a href="/client/todayvisit"><div style="color: red;"  class="cbp-filter-item">today </div></a>
+          </div>
+      <div class="row">
+        <div class="col-md-2 col-sm-6 col-xs-12">
+            <h2> my guest </h2>
+            <div class="agent-p-img">
+            </div>
+            <br/>
+            <br/>
+          </div>
+        <div class="table-responsive">
+            <h2></h2>
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>contact_no</th>
+                        <th>description</th>
+                        <th>date_time</th>
+                        <th>registered_by</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in e %}
+                    <tr>
+                        <td>{{data.name}}</td>
+                        <td>{{data.contact_no}}</td>
+                        <td>{{data.description}}</td>
+                        <td>{{data.date_time}}</td>
+                        <td>{{data.registered_by.name}}</td>
+                        {% if data.status == 0 %}
+                        <td>
+                            <ul class="action"> 
+                                <li class="edit"> <a href="/client/approve/{{data.visitor_id}}"><img src="{% static '/images/checked-accept-svgrepo-com.svg' %}" height="20px" width="30px" /></a></li>
+                                <li class="edit"> </li>
+                                
+                                <li class="delete"><a href="/client/refuce/{{data.visitor_id}}"><img src="{% static '/images/deny-svgrepo-com.svg' %}" height="20px" width="30px" /></a></li>
+                              </ul>
+                        </td>
+                        {% elif data.status == 1 %}
+                        <td>
+                            approved
+                        </td>
+                        {% else %}
+                        <td>
+                            refuced
+                        </td>   
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
